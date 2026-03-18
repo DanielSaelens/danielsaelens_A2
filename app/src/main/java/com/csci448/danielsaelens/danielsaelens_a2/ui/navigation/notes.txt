@@ -1,0 +1,22 @@
+  val welcomeContract = WelcomeContract(
+        state = _questionState,
+        effect = _effectState,
+        viewModel = this@MisereViewModel
+    )
+     val settingsContract = SettingsContract(
+           state = _questionState,
+           effect = _effectState,
+           viewModel = this@MisereViewModel
+       )
+         val historyContract = HistoryContract(
+               state = _questionState,
+               effect = _effectState,
+               viewModel = this@MisereViewModel
+           )
+
+         val gameContract = GameContract(
+               state = _questionState,
+               effect = _effectState,
+               viewModel = this@MisereViewModel
+           )
+
