@@ -11,37 +11,32 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.compose.rememberNavController
+import com.csci448.danielsaelens.danielsaelens_a2.ui.navigation.MisereNavHost
 import com.csci448.danielsaelens.danielsaelens_a2.ui.theme.Danielsaelens_A2Theme
+import com.csci448.danielsaelens.danielsaelens_a2.ui.viewmodel.MisereViewModel
+import com.csci448.danielsaelens.danielsaelens_a2.ui.viewmodel.MisereViewModelFactory
 
 class MainActivity : ComponentActivity() {
+    private lateinit var _viewModel: MisereViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val factory = MisereViewModelFactory(savedInstanceState)
+        _viewModel = ViewModelProvider(this, factory)[factory.getViewModelClass()]
+
         setContent {
             Danielsaelens_A2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val navController = rememberNavController()
+                MisereNavHost(
+                    navController = navController,
+                    misereViewModel = _viewModel
+                )
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Danielsaelens_A2Theme {
-        Greeting("Android")
-    }
-}

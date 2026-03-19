@@ -53,9 +53,59 @@ class MisereViewModel() : ViewModel() {
 
 
 
-    fun handleIntent(intent: MisereIntent){
-        when(intent){
+    fun handleIntent(intent: MisereIntent) {
+        when(intent) {
+            is MisereIntent.WelcomeIntent -> handleWelcomeIntent(intent)
+            is MisereIntent.SettingsIntent -> handleSettingsIntent(intent)
+            is MisereIntent.HistoryIntent -> handleHistoryIntent(intent)
+            is MisereIntent.GameIntent -> handleGameIntent(intent)
+        }
+    }
 
+    private fun handleWelcomeIntent(intent: MisereIntent.WelcomeIntent) {
+        when(intent) {
+            is MisereIntent.WelcomeIntent.NavigateToGame -> { }
+            is MisereIntent.WelcomeIntent.NavigateToHistory -> { }
+            is MisereIntent.WelcomeIntent.NavigateToSettings -> { }
+            is MisereIntent.WelcomeIntent.Quit -> { }
+        }
+    }
+
+    private fun handleSettingsIntent(intent: MisereIntent.SettingsIntent) {
+        when(intent) {
+            is MisereIntent.SettingsIntent.ClearHistory -> {
+                _historyState.value = HistoryState()
+            }
+
+            is MisereIntent.SettingsIntent.ChangeNumPlayers -> {
+                _settingsState.value = _settingsState.value.copy(numPlayers = intent.numPlayers)
+            }
+
+            is MisereIntent.SettingsIntent.ChangeCompDifficulty -> {
+                _settingsState.value = _settingsState.value.copy(difficulty = intent.compDifficulty)
+            }
+
+            is MisereIntent.SettingsIntent.ChangeGoesFirst -> {
+                _settingsState.value =_settingsState.value.copy(whoGoesFirst = intent.whoFirst)
+            }
+            is MisereIntent.SettingsIntent.ChangeTheme -> {
+                _settingsState.value =_settingsState.value.copy(theme = intent.theme)
+            }
+        }
+    }
+
+    private fun handleHistoryIntent(intent: MisereIntent.HistoryIntent) {
+        when(intent) {
+            is MisereIntent.HistoryIntent.NavigateBack -> { }
+        }
+    }
+
+    private fun handleGameIntent(intent: MisereIntent.GameIntent) {
+        when(intent) {
+            is MisereIntent.GameIntent.CellClicked -> { }
+            is MisereIntent.GameIntent.PlayAgain -> { }
+            is MisereIntent.GameIntent.NavigateBackToHistory -> { }
+            is MisereIntent.GameIntent.NavigateBack -> { }
         }
     }
 
