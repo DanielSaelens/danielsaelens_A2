@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,7 +35,8 @@ fun SettingsScreen(
     onDifficultyChange: (String) -> Unit,
     onWhoGoesFirstChange: (String) -> Unit,
     onThemeChange: (String) -> Unit,
-    onClearHistory: () -> Unit
+    onClearHistory: () -> Unit,
+    onNavigateBack: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -139,8 +141,16 @@ fun SettingsScreen(
         ) {
             Text(stringResource(R.string.settings_clear_history))
         }
-
+        Spacer(modifier = Modifier.weight(1f))
+        Button(
+            onClick = onNavigateBack,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Go Back")
+        }
     }
+
+
 }
 
 

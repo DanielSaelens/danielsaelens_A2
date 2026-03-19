@@ -23,6 +23,7 @@ sealed class MisereIntent {
         object PlayAgain: GameIntent()
         object NavigateBackToHistory: GameIntent()
         object NavigateBack: GameIntent()
+        object ComputerFirstMove : GameIntent()
     }
 
 }

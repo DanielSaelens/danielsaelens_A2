@@ -40,7 +40,10 @@ object SettingsScreenSpec : IScreenSpec {
             },
             onClearHistory = {
                 contract.dispatcher.invoke(MisereIntent.SettingsIntent.ClearHistory)
-            }
+            },
+            onNavigateBack = { navController.popBackStack() }
+
+
 
         )
     }

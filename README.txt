@@ -1,0 +1,3 @@
+1) The difficulty I had was figuring out which screens lead to which. However, because of the app we are designing, I was able to map out what screens needed to be navigated to. Once I sketched out the different screens and where they lead, the process was not so bad. I did reference the Quizler and Samodelkin labs to help figure out placement. 
+
+2) I made several different packages and kept like items together. I had all the contracts in package and built a ViewModel and ViewModelFactory. The state, intent, and effect classes each lived in their own packages as well. Essentially I looked at the labs we did previosuly and tried to organize it that way. As tedious as this was, the amount of debugging time I saved was significant. 

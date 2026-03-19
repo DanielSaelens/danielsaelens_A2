@@ -14,7 +14,21 @@ object HistoryScreenSpec : IScreenSpec {
         misereViewModel: MisereViewModel,
         navController: NavController
     ) {
-        HistoryScreen()
+        val historyState = misereViewModel.historyState.value
+
+        HistoryScreen(
+            gameRecords = historyState.gameRecords,
+            playerOneWins = historyState.playerOneWins,
+            playerOneLosses = historyState.playerOneLosses,
+            playerOneTies = historyState.playerOneTies,
+            playerTwoWins = historyState.playerTwoWins,
+            playerTwoLosses = historyState.playerTwoLosses,
+            playerTwoTies = historyState.playerTwoTies,
+            computerWins = historyState.computerWins,
+            computerLosses = historyState.computerLosses,
+            computerTies = historyState.computerTies,
+            onNavigateBack = { navController.popBackStack() }
+        )
 
 
     }
